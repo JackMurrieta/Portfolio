@@ -1,0 +1,44 @@
+.badge-button {
+  --badge-color: #0ea5e9;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  padding: 0.65rem 1.2rem;
+  border-radius: 999px;
+
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: white;
+
+  background: linear-gradient(
+    135deg,
+    var(--badge-color),
+    rgba(255, 255, 255, 0.1)
+  );
+
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.badge-button:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  filter: brightness(1.1);
+}
+
+.badge-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-label {
+  letter-spacing: 0.3px;
+}
