@@ -16,6 +16,23 @@
     outline-offset: 2px;
   }
 }
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 5rem;
+  gap: 4rem;
+}
+
+main > section {
+  width: 100%;
+  max-width: 850px;
+  padding: 0 1.5rem;
+  margin: 0 auto;
+  padding: 1.3rem;
+}
 
 .hero {
   position: relative;
@@ -167,7 +184,7 @@
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: -4.5px;
     border: 5px solid transparent;

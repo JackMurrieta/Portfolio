@@ -1,0 +1,25 @@
+:root {
+  --c-50:  #E9F3FB;
+  --c-100: #C2DEF5;
+  --c-200: #9BC9EE;
+  --c-300: #73B3E7;
+  --c-400: #4C9EE1;
+  --c-500: #2589DA;
+  --c-600: #1C69A8;
+  --c-700: #18578C;
+  --c-800: #113F64;
+  --c-900: #0A263D;
+  --c-950: #040E16;
+
+  --bg:         #040E16;
+  --bg-surface: #0A263D;
+  --bg-card:    #113F64;
+  --border:     #1C69A8;
+  --border-dim: rgba(28, 105, 168, 0.35);
+
+  --text-primary:   #E9F3FB;
+  --text-secondary: #9BC9EE;
+  --text-muted:     #4C9EE1;
+  --accent:         #2589DA;
+  --accent-bright:  #4C9EE1;
+}
