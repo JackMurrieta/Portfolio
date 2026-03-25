@@ -11,15 +11,14 @@ interface BadgeButtonProps {
 const BadgeButton: React.FC<BadgeButtonProps> = ({
   label,
   href,
-  color = "#0ea5e9",
-  icon
+  color = "#64748b", // gris neutro para badges sin color explícito
+  icon,
 }) => {
   const content = (
     <div
       className="badge-button"
-      style={{
-        "--badge-color": color
-      } as React.CSSProperties}
+      data-label={label}
+      style={{ "--badge-color": color } as React.CSSProperties}
     >
       {icon && <span className="badge-icon">{icon}</span>}
       <span className="badge-label">{label}</span>
