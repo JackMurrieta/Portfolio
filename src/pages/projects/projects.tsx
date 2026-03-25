@@ -7,24 +7,24 @@ const ProjectsSection: React.FC = () => {
   return (
     <section className="projects-section" id="projects">
       <div className="projects-container">
-        {/* HEADER */}
-        <div className="projects-header">
+        {/* ── HEADER ── */}
+        <header className="projects-header">
           <h2>Projects</h2>
           <p>
             A selection of projects focused on scalable architecture,
             performance, and real-world impact.
           </p>
-        </div>
+        </header>
 
-        {/* PROJECT LIST */}
+        {/* ── PROJECT LIST ── */}
         <div className="projects-list">
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <ProjectCard
-              key={index}
+              key={project.title} // 🔥 mejor que index
               project={project}
-              image={`/images/project-${index}.png`}
-              repoUrl="#"
-              previewUrl="#"
+              media={project.media ?? []} // 🔥 fallback seguro
+              repoUrl={project.repoUrl}
+              previewUrl={project.previewUrl}
             />
           ))}
         </div>
