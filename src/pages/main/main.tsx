@@ -3,7 +3,7 @@ import "./main.css";
 
 const JackMain = () => {
   return (
-    <section id="about" className="section hero">
+    <section id="main" className="section hero">
       {/* Avatar + Badge row */}
       <div className="hero-top">
         <div className="avatar-wrapper">

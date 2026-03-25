@@ -24,7 +24,7 @@ import {
 
 const TechSkills: React.FC = () => {
   return (
-    <section className="tech-section">
+    <section id="stack" className="tech-section">
       <h2 className="tech-title">Tech Stack & Tools</h2>
 
       <div className="tech-grid">
