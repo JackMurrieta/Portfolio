@@ -1,5 +1,6 @@
-import { Mail } from "lucide-react";
+import { FileText, Mail } from "lucide-react";
 import "./main.css";
+import BadgeButton from "../../components/badgeButton/badgeButton";
 
 const JackMain = () => {
   return (
@@ -50,6 +51,14 @@ const JackMain = () => {
           <Mail size={16} />
           Contact me
         </a>
+
+        {/* BadgeButton para el CV */}
+        <BadgeButton
+          label="Look CV"
+          href="/Portfolio/public/cv/Jack_Murrieta_CV.pdf"
+          color="#22c55e"
+          icon={<FileText size={14} />}
+        />
       </div>
     </section>
   );
