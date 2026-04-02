@@ -1,6 +1,5 @@
 import { FileText, Mail } from "lucide-react";
 import "./main.css";
-import BadgeButton from "../../components/badgeButton/badgeButton";
 
 const JackMain = () => {
   return (
@@ -42,7 +41,6 @@ const JackMain = () => {
         </strong>{" "}
       </p>
 
-      {/* CTA Buttons */}
       <div className="hero-actions">
         <a
           href="mailto:jack.murrieta252851@potros.itson.edu.mx"
@@ -52,13 +50,15 @@ const JackMain = () => {
           Contact me
         </a>
 
-        {/* BadgeButton para el CV */}
-        <BadgeButton
-          label="Look CV"
+        <a
           href="/Portfolio/public/cv/Jack_Murrieta_CV.pdf"
-          color="#22c55e"
-          icon={<FileText size={14} />}
-        />
+          target="_blank"
+          rel="noopener noreferrer"
+          className="action-btn"
+        >
+          <FileText size={16} />
+          Look at my CV
+        </a>
       </div>
     </section>
   );

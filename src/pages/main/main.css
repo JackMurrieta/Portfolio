@@ -87,3 +87,31 @@
   background: rgba(56, 189, 248, 0.05);
   transform: translateY(-2px);
 }
+
+/* Hero actions row */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Botones consistentes */
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  border: 1px solid var(--border);
+  padding: 0.75rem 1.6rem;
+  border-radius: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  min-width: 180px;
+}
+
+.action-btn:hover {
+  border-color: var(--accent);
+  background: rgba(56, 189, 248, 0.05);
+  transform: translateY(-2px);
+}
