@@ -14,7 +14,7 @@ export interface Project {
 
 interface Props {
   project: Project;
-  media: string[]; // solo imágenes
+  media: string[];
   repoUrl?: string;
   previewUrl?: string;
 }

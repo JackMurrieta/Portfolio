@@ -20,9 +20,9 @@ const ProjectsSection: React.FC = () => {
         <div className="projects-list">
           {projects.map((project) => (
             <ProjectCard
-              key={project.title} // 🔥 mejor que index
+              key={project.title}
               project={project}
-              media={project.media ?? []} // 🔥 fallback seguro
+              media={project.media ?? []}
               repoUrl={project.repoUrl}
               previewUrl={project.previewUrl}
             />

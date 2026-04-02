@@ -26,12 +26,17 @@
 
 /* LIST */
 .projects-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 30px;
+  align-items: start;
 }
 
 @media (max-width: 768px) {
+  .projects-list {
+    grid-template-columns: 1fr; /* vuelve a 1 columna en móvil */
+  }
+
   .project-card {
     flex-direction: column;
   }
