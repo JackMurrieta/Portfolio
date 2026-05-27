@@ -1,11 +1,11 @@
 .section.hero {
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 2em;
+  margin-top: 2rem;
 }
 
+/* AVATAR ROW */
 .hero-top {
   display: flex;
   align-items: center;
@@ -14,6 +14,7 @@
 }
 
 .avatar-wrapper {
+  position: relative;
   width: 72px;
   height: 72px;
   border-radius: 50%;
@@ -23,12 +24,23 @@
   align-items: center;
   justify-content: center;
   border: 2px solid var(--border);
+  flex-shrink: 0;
+}
+
+.avatar {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .avatar-fallback {
   font-weight: 800;
   color: var(--bg-main);
   font-size: 1.2rem;
+  z-index: 0;
 }
 
 .availability-badge {
@@ -49,20 +61,35 @@
   background: var(--success);
   border-radius: 50%;
   box-shadow: 0 0 8px var(--success);
+  flex-shrink: 0;
+  animation: pulse 2.5s ease-in-out infinite;
 }
 
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 6px var(--success); }
+  50%        { box-shadow: 0 0 14px var(--success); }
+}
+
+/* HEADING */
 .hero-title {
-  font-size: clamp(2.5rem, 7vw, 3.5rem);
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
   font-weight: 800;
   margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--text-h);
 }
 
+.hero-name {
+  color: var(--accent);
+}
+
+/* DESCRIPTION */
 .hero-description {
-  font-size: 1.15rem;
-  line-height: 1.7;
+  font-size: 1.05rem;
+  line-height: 1.75;
   color: var(--text-p);
-  max-width: 680px;
+  max-width: 640px;
   margin-bottom: 2.5rem;
 }
 
@@ -71,47 +98,60 @@
   font-weight: 600;
 }
 
-.action-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  border: 1px solid var(--border);
-  padding: 0.7rem 1.4rem;
-  border-radius: 12px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.action-btn:hover {
-  border-color: var(--accent);
-  background: rgba(56, 189, 248, 0.05);
-  transform: translateY(-2px);
-}
-
-/* Hero actions row */
+/* ACTIONS */
 .hero-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
 }
 
-/* Botones consistentes */
 .action-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.7rem;
+  gap: 0.6rem;
   border: 1px solid var(--border);
-  padding: 0.75rem 1.6rem;
+  padding: 0.7rem 1.5rem;
   border-radius: 12px;
   font-weight: 500;
-  transition: all 0.3s ease;
-  min-width: 180px;
+  font-size: 0.9rem;
+  color: var(--text-h);
+  transition: all 0.25s ease;
 }
 
 .action-btn:hover {
   border-color: var(--accent);
-  background: rgba(56, 189, 248, 0.05);
+  background: rgba(56, 189, 248, 0.06);
   transform: translateY(-2px);
+}
+
+.action-btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg-main);
+  font-weight: 600;
+}
+
+.action-btn--primary:hover {
+  background: #7dd3fc;
+  border-color: #7dd3fc;
+  color: var(--bg-main);
+}
+
+@media (max-width: 480px) {
+  .hero-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
 }

@@ -1,7 +1,9 @@
 import Header from "./components/header/header";
+import Footer from "./components/footer/footer";
 import JackMain from "./pages/main/main";
-import ProjectsSection from "./pages/projects/projects";
 import TechStack from "./pages/techStack/techStack";
+import ProjectsSection from "./pages/projects/projects";
+import About from "./pages/about/about";
 import "./App.css";
 
 function App() {
@@ -12,7 +14,9 @@ function App() {
         <JackMain />
         <TechStack />
         <ProjectsSection />
+        <About />
       </main>
+      <Footer />
     </>
   );
 }

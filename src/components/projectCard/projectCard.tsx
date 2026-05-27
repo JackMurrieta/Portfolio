@@ -1,41 +1,33 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { FaGithub } from "react-icons/fa";
+import type { Project } from "../../types";
 import "./projectCard.css";
 
-export interface Project {
-  title: string;
-  period: string;
-  stack: string[];
-  bullets: string[];
-  status?: "completed" | "in-progress";
-}
+const CATEGORY_COLORS: Record<string, string> = {
+  Frontend: "#61dafb",
+  Backend: "#6db33f",
+  "Full Stack": "#f89820",
+  Systems: "#c084fc",
+};
 
 interface Props {
   project: Project;
-  media: string[];
-  repoUrl?: string;
-  previewUrl?: string;
 }
 
-const ProjectCard: React.FC<Props> = ({
-  project,
-  media,
-  repoUrl,
-  previewUrl,
-}) => {
+const ProjectCard: React.FC<Props> = ({ project }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const hasMedia = project.media.length > 0;
 
-  const autoplayPlugin = Autoplay({
-    delay: 3000,
-    stopOnMouseEnter: true,
-    stopOnInteraction: false,
-  });
+  const autoplayRef = useRef(
+    Autoplay({ delay: 3000, stopOnMouseEnter: true, stopOnInteraction: false })
+  );
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
-    autoplayPlugin,
-  ]);
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true },
+    hasMedia ? [autoplayRef.current] : []
+  );
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -49,47 +41,59 @@ const ProjectCard: React.FC<Props> = ({
   }, [emblaApi, onSelect]);
 
   const statusMod = project.status ?? "completed";
-  const statusLabel =
-    project.status === "in-progress" ? "In Progress" : "Completed";
+  const statusLabel = project.status === "in-progress" ? "In Progress" : "Completed";
+  const categoryColor = CATEGORY_COLORS[project.category] ?? "#64748b";
 
   return (
     <div className="project-card">
-      {/* ── MEDIA ── */}
+      {/* MEDIA */}
       <div className="project-card__media">
-        <span className={`pc-status pc-status--${statusMod}`}>
-          {statusLabel}
+        <span className={`pc-status pc-status--${statusMod}`}>{statusLabel}</span>
+        <span
+          className="pc-category"
+          style={{ "--cat-color": categoryColor } as React.CSSProperties}
+        >
+          {project.category}
         </span>
 
-        <div className="embla" ref={emblaRef}>
-          <div className="embla__container">
-            {media.map((src, i) => (
-              <div className="embla__slide" key={i}>
-                <img
-                  src={src}
-                  alt={`${project.title} ${i + 1}`}
-                  draggable={false}
-                />
+        {hasMedia ? (
+          <>
+            <div className="embla" ref={emblaRef}>
+              <div className="embla__container">
+                {project.media.map((src, i) => (
+                  <div className="embla__slide" key={i}>
+                    <img src={src} alt={`${project.title} screenshot ${i + 1}`} draggable={false} />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Dots */}
-        {media.length > 1 && (
-          <div className="embla__dots">
-            {media.map((_, i) => (
-              <button
-                key={i}
-                className={`embla__dot ${i === selectedIndex ? "active" : ""}`}
-                onClick={() => emblaApi?.scrollTo(i)}
-                aria-label={`Slide ${i + 1}`}
-              />
-            ))}
+            </div>
+            {project.media.length > 1 && (
+              <div className="embla__dots">
+                {project.media.map((_, i) => (
+                  <button
+                    key={i}
+                    className={`embla__dot ${i === selectedIndex ? "active" : ""}`}
+                    onClick={() => emblaApi?.scrollTo(i)}
+                    aria-label={`Go to slide ${i + 1}`}
+                  />
+                ))}
+              </div>
+            )}
+          </>
+        ) : (
+          <div className="project-card__placeholder">
+            <span
+              className="placeholder-initial"
+              style={{ color: categoryColor }}
+            >
+              {project.title.charAt(0)}
+            </span>
+            <span className="placeholder-label">No preview available</span>
           </div>
         )}
       </div>
 
-      {/* ── CONTENIDO ── */}
+      {/* CONTENT */}
       <div className="project-card__content">
         <div className="project-card__header">
           <h3>{project.title}</h3>
@@ -97,10 +101,8 @@ const ProjectCard: React.FC<Props> = ({
         </div>
 
         <div className="stack">
-          {project.stack.map((tech, i) => (
-            <span key={i} className="badge">
-              {tech}
-            </span>
+          {project.stack.map((tech) => (
+            <span key={tech} className="badge">{tech}</span>
           ))}
         </div>
 
@@ -111,34 +113,15 @@ const ProjectCard: React.FC<Props> = ({
         </ul>
 
         <div className="actions">
-          {repoUrl && (
-            <a
-              href={repoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn"
-            >
+          {project.repoUrl && (
+            <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="btn">
               <FaGithub size={14} />
               Code
             </a>
           )}
-          {previewUrl && (
-            <a
-              href={previewUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn--secondary"
-            >
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
+          {project.previewUrl && (
+            <a href={project.previewUrl} target="_blank" rel="noopener noreferrer" className="btn btn--secondary">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                 <polyline points="15 3 21 3 21 9" />
                 <line x1="10" y1="14" x2="21" y2="3" />

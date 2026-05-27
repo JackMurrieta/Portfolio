@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import "./header.css";
 
+// Update LINKEDIN_URL with your actual LinkedIn profile
+const GITHUB_URL = "https://github.com/JackMurrieta";
+const LINKEDIN_URL = "https://www.linkedin.com/in/jackmurrieta/";
+
 const Header: React.FC = () => {
-  const [active, setActive] = useState("experience");
+  const [active, setActive] = useState("main");
 
   const handleScroll = (id: string) => {
     setActive(id);
@@ -13,17 +18,16 @@ const Header: React.FC = () => {
   };
 
   const navItems = [
-    { id: "main", label: "Main" },
-    { id: "stack", label: "Tech Stack & Tools" },
+    { id: "main", label: "Home" },
+    { id: "stack", label: "Skills" },
     { id: "projects", label: "Projects" },
-    { id: "about", label: "About me" },
+    { id: "about", label: "About" },
     { id: "contact", label: "Contact" },
   ];
 
   return (
     <header className="header">
       <div className="header-container">
-        {/* Navigation */}
         <nav className="nav">
           {navItems.map((item) => (
             <button
@@ -35,6 +39,17 @@ const Header: React.FC = () => {
             </button>
           ))}
         </nav>
+
+        <div className="header-divider" aria-hidden="true" />
+
+        <div className="header-social">
+          <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+            <FaGithub size={16} />
+          </a>
+          <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+            <FaLinkedin size={16} />
+          </a>
+        </div>
       </div>
     </header>
   );
