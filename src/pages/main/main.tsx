@@ -51,7 +51,7 @@ const JackMain = () => {
         </a>
 
         <a
-          href="/Portfolio/public/cv/Jack_Murrieta_CV.pdf"
+          href="cv/CV_JackMurrieta.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="action-btn"
