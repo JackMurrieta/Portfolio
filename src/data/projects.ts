@@ -10,7 +10,7 @@ export const projects: Project[] = [
     status: "in-progress",
     category: "Frontend",
     featured: true,
-    media: [],
+    media: [withBase("images/Alzaid/login.png"), withBase("images/Alzaid/index.png")],
     repoUrl: "https://github.com/JackMurrieta/Alzaid-SuperAdmin",
     bullets: [
       "Leading a full front-end redesign of a real client's web application, migrating to a component-based Angular architecture with TypeScript.",
@@ -40,7 +40,7 @@ export const projects: Project[] = [
     status: "completed",
     category: "Systems",
     featured: true,
-    media: [],
+    media: [withBase("images/Timbiriche/tablero.png"),withBase("images/Timbiriche/Menu.png"), withBase("images/Timbiriche/salaEspera.png")],
     repoUrl: "https://github.com/vikvillalba/Timbiriche",
     bullets: [
       "Developed a real-time multiplayer board game using an event-driven architecture with a central EventBus to decouple game logic from UI rendering.",
@@ -71,7 +71,8 @@ export const projects: Project[] = [
     status: "completed",
     category: "Backend",
     featured: false,
-    media: [],
+    media: [withBase("images/CEROMenu.png")
+    ],
     repoUrl: "https://github.com/vikvillalba/proyectoCERO",
     bullets: [
       "Built a desktop application for a dance studio to fully digitize student registration and enrollment management.",
