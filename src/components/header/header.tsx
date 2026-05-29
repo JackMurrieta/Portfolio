@@ -4,7 +4,7 @@ import "./header.css";
 
 // Update LINKEDIN_URL with your actual LinkedIn profile
 const GITHUB_URL = "https://github.com/JackMurrieta";
-const LINKEDIN_URL = "https://www.linkedin.com/in/jackmurrieta/";
+const LINKEDIN_URL = "https://www.linkedin.com/in/jack-murrieta/";
 
 const Header: React.FC = () => {
   const [active, setActive] = useState("main");
