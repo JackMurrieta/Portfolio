@@ -10,7 +10,7 @@ export const projects: Project[] = [
     status: "in-progress",
     category: "Frontend",
     featured: true,
-    media: [withBase("images/Alzaid/login.png"), withBase("images/Alzaid/index.png")],
+    media: [withBase("images/Alzaid/login.png"), withBase("images/Alzaid/Index.png")],
     repoUrl: "https://github.com/JackMurrieta/Alzaid-SuperAdmin",
     bullets: [
       "Leading a full front-end redesign of a real client's web application, migrating to a component-based Angular architecture with TypeScript.",
